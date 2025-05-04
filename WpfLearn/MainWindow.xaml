@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfLearn"
         mc:Ignorable="d"
+        xmlns:examples="clr-namespace:WpfLearn.Examples"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <examples:BasicObservableObjects />
 </Window>
