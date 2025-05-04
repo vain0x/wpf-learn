@@ -7,5 +7,7 @@
         mc:Ignorable="d"
         xmlns:examples="clr-namespace:WpfLearn.Examples"
         Title="MainWindow" Height="450" Width="800">
-    <examples:BasicObservableObjects />
+
+    <!--<examples:BasicObservableObjects />-->
+    <examples:ValidationWithAnnotationsExample />
 </Window>
