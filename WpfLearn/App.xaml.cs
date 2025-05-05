@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
+using System.Globalization;
 using System.Windows;
 
 namespace WpfLearn;
@@ -9,5 +8,9 @@ namespace WpfLearn;
 /// </summary>
 public partial class App : Application
 {
+    static App()
+    {
+        Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+        Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+    }
 }
-
