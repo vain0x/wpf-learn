@@ -9,5 +9,6 @@
         Title="MainWindow" Height="450" Width="800">
 
     <!--<examples:BasicObservableObjects />-->
-    <examples:ValidationWithAnnotationsExample />
+    <!--<examples:ValidationWithAnnotationsExample />-->
+    <examples:ValidationWithBindingGroupExample />
 </Window>
