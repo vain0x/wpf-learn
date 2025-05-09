@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="WpfLearn.Examples.RadioSelectorExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfLearn.Examples"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:RadioSelectorExampleViewModel />
+    </UserControl.DataContext>
+
+    <StackPanel>
+        <GroupBox Header="Basic usage" Margin="20,10" Padding="5">
+            <StackPanel>
+                <local:RadioSelector Focusable="False" GroupName="GroupBasic" ItemsSource="{Binding Items}"
+                        SelectedItem="{Binding SelectedItem}" SelectedValue="{Binding SelectedValue}" SelectedValuePath="Value"
+                        DisplayMemberPath="Display">
+                    <local:RadioSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,-5,-5" />
+                        </ItemsPanelTemplate>
+                    </local:RadioSelector.ItemsPanel>
+                    <local:RadioSelector.ItemContainerStyle>
+                        <Style TargetType="{x:Type RadioButton}">
+                            <Setter Property="Margin" Value="0,0,5,5" />
+                        </Style>
+                    </local:RadioSelector.ItemContainerStyle>
+                </local:RadioSelector>
+
+                <TextBlock Margin="0,10">
+                    <Run Text="SelectedItem =" />
+                    <Run Text="{Binding SelectedItem, Mode=OneWay}" />
+                    <Run Text=", SelectedValue =" />
+                    <Run Text="{Binding SelectedValue, Mode=OneWay}" />
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+        
+        <GroupBox Header="Init/Set" Margin="20,10" Padding="5">
+            <StackPanel Orientation="Horizontal">
+                <local:RadioSelector Focusable="False" GroupName="GroupInit" ItemsSource="{Binding Items}"
+                        SelectedItem="{Binding SelectedItemInit}" SelectedValue="{Binding SelectedValueInit}" SelectedValuePath="Value">
+                    <local:RadioSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </local:RadioSelector.ItemsPanel>
+                </local:RadioSelector>
+
+                <TextBox Margin="10,0" Width="40" Text="{Binding SelectedValueInit, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Margin="10,0">
+                    <Run Text="SelectedItem =" />
+                    <Run Text="{Binding SelectedItemInit, Mode=OneWay}" />
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="BindingGroup case" Margin="20,10" Padding="5">
+            <GroupBox.BindingGroup>
+                <BindingGroup />
+            </GroupBox.BindingGroup>
+            <StackPanel Orientation="Horizontal">
+                <local:RadioSelector Focusable="False" GroupName="GroupBg" ItemsSource="{Binding Items}"
+                        SelectedItem="{Binding SelectedItemBg, UpdateSourceTrigger=PropertyChanged}">
+                    <local:RadioSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </local:RadioSelector.ItemsPanel>
+                </local:RadioSelector>
+
+                <TextBlock Margin="10,0">
+                    <Run Text="SelectedItem =" />
+                    <Run Text="{Binding SelectedItemBg, Mode=OneWay}" />
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Enum case" Margin="20,10" Padding="5">
+            <StackPanel Orientation="Horizontal">
+                <local:RadioSelector Focusable="False" GroupName="GroupEnum" ItemsSource="{local:EnumValues {x:Type local:MyRadioEnum}}"
+                        SelectedItem="{Binding SelectedItemEnum}"
+                        SelectedValue="{Binding SelectedValueEnum}" SelectedValuePath="Value"
+                        DisplayMemberPath="Display">
+                    <local:RadioSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </local:RadioSelector.ItemsPanel>
+                </local:RadioSelector>
+
+                <TextBlock Margin="10,0">
+                    <Run Text="SelectedItem =" />
+                    <Run Text="{Binding SelectedItemEnum, Mode=OneWay}" />
+                    <Run Text=", SelectedValue =" />
+                    <Run Text="{Binding SelectedValueEnum, Mode=OneWay}" />
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>
