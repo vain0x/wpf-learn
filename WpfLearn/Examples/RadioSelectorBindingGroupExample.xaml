@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="WpfLearn.Examples.RadioSelectorBindingGroupExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:local="clr-namespace:WpfLearn.Examples"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:RadioIsCheckedBindingGroupExampleViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <local:RadioCheckConverter x:Key="RadioCheckConverter" />
+    </UserControl.Resources>
+
+    <StackPanel>
+        <StackPanel Margin="0" HorizontalAlignment="Stretch" Orientation="Horizontal" Background="#F3F3F3">
+            <TextBlock Margin="10,5" Text="RadioSelectorBindingGroup" FontWeight="Bold" />
+        </StackPanel>
+
+        <GroupBox x:Name="FormGroup" Header="Form" Margin="20">
+            <GroupBox.BindingGroup>
+                <BindingGroup />
+            </GroupBox.BindingGroup>
+
+            <StackPanel>
+                <local:RadioSelector Focusable="False" GroupName="Group1" SelectedItem="{Binding SelectedValue}">
+                    <local:RadioSelector.ItemsSource>
+                        <collections:ArrayList>
+                            <local:MyEnum>A</local:MyEnum>
+                            <local:MyEnum>B</local:MyEnum>
+                            <local:MyEnum>C</local:MyEnum>
+                        </collections:ArrayList>
+                    </local:RadioSelector.ItemsSource>
+                    <local:RadioSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </local:RadioSelector.ItemsPanel>
+                    <local:RadioSelector.ItemContainerStyle>
+                        <Style TargetType="{x:Type RadioButton}">
+                            <Setter Property="Margin" Value="10" />
+                        </Style>
+                    </local:RadioSelector.ItemContainerStyle>
+                </local:RadioSelector>
+
+                <TextBlock Margin="10">
+                    <Run Text="SelectedValue =" />
+                    <Run Text="{Binding SelectedValue, Mode=OneWay}" />
+                </TextBlock>
+
+                <TextBlock Margin="10">
+                    <Run Text="BindingGroup.ValidationErrors: " />
+                    <Run Text="{Binding ElementName=FormGroup, Path=BindingGroup.ValidationErrors/ErrorContent, Mode=OneWay}" Foreground="Red" />
+                </TextBlock>
+
+                <TextBlock Margin="10">
+                    <Run Text="(Validation.Errors): " />
+                    <Run Text="{Binding ElementName=FormGroup, Path=(Validation.Errors)/ErrorContent, Mode=OneWay}" Foreground="Red" />
+                </TextBlock>
+
+                <StackPanel HorizontalAlignment="Left">
+                    <Button x:Name="ValidateButton" Margin="10" Padding="5" Click="ValidateButton_Click">
+                        Validate
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

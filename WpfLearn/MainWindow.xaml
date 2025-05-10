@@ -12,5 +12,7 @@
     <!--<examples:ValidatedDataGridExample />-->
     <!--<examples:ValidationWithAnnotationsExample />-->
     <!--<examples:ValidationWithBindingGroupExample />-->
-    <examples:RadioSelectorExample />
+    <!--<examples:RadioSelectorExample />-->
+    <!--<examples:RadioIsCheckedBindingGroupExample />-->
+    <examples:RadioSelectorBindingGroupExample />
 </Window>
