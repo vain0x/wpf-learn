@@ -14,5 +14,6 @@
     <!--<examples:ValidationWithBindingGroupExample />-->
     <!--<examples:RadioSelectorExample />-->
     <!--<examples:RadioIsCheckedBindingGroupExample />-->
-    <examples:RadioSelectorBindingGroupExample />
+    <!--<examples:RadioSelectorBindingGroupExample />-->
+    <examples:DropDownButtonExample />
 </Window>

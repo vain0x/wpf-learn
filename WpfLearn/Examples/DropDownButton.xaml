@@ -1,0 +1,27 @@
+﻿<HeaderedContentControl x:Class="WpfLearn.Examples.DropDownButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfLearn.Examples"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <HeaderedContentControl.Template>
+        <ControlTemplate TargetType="{x:Type local:DropDownButton}">
+            <Grid x:Name="PART_Grid" Margin="{TemplateBinding Margin}">
+                <ToggleButton IsChecked="{TemplateBinding IsDropDownOpen}" x:Name="PART_Button" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Padding="{TemplateBinding Padding}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Checked="PART_Button_Checked" Unchecked="PART_Button_Unchecked" />
+
+                <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" StaysOpen="False" PlacementTarget="{Binding ElementName=PART_Button}" AllowsTransparency="True" Closed="PART_Popup_Closed">
+                    <Grid Background="Transparent">
+                        <Border BorderBrush="#F2F2F2" BorderThickness="1" Background="White" CornerRadius="5">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#808080" BlurRadius="3" ShadowDepth="6" />
+                            </Border.Effect>
+                        </Border>
+                        <ContentPresenter Margin="10" />
+                    </Grid>
+                </Popup>
+            </Grid>
+        </ControlTemplate>
+    </HeaderedContentControl.Template>
+</HeaderedContentControl>
